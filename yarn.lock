@@ -402,6 +402,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@tabler/icons@^1.76.0":
+  version "1.76.0"
+  resolved "https://registry.yarnpkg.com/@tabler/icons/-/icons-1.76.0.tgz#b47d44c1be0884bd0303d6b6830e087a474d8f7b"
+  integrity sha512-MEN8cWpnYoY0BcPgrtwnkA+U3y5uP6haMqsX1jq5xbej9KZK9EnWc+J2Xi3X3y5HUtTsSeQry+qEOxCzrxw9EQ==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"

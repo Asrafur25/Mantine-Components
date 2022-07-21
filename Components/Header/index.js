@@ -1,89 +1,107 @@
-import React, { useState } from 'react';
-import { createStyles, Header, Group, ActionIcon, Container, Burger } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
-import { BrandTwitter, BrandYoutube, BrandInstagram } from 'tabler-icons-react';
+import React, { useState } from "react";
+import {
+  createStyles,
+  Header,
+  Group,
+  ActionIcon,
+  Container,
+  Burger,
+  Text,
+  Box,
+  Space,
+} from "@mantine/core";
+import { useBooleanToggle } from "@mantine/hooks";
+import { BrandTwitter, BrandYoutube, BrandInstagram } from "tabler-icons-react";
+import { ThemeIcon } from "@mantine/core";
+import Image from "next/image";
+import TraideasLogo from "../../public/Traideas Logo.png";
 
-
-const links= [
-    {
-      "link": "/Home",
-      "label": "Home"
-    },
-    {
-      "link": "/learn",
-      "label": "Features"
-    },
-    {
-      "link": "/pricing",
-      "label": "Pricing"
-    }
-  ]
+const links = [
+  {
+    link: "/Home",
+    label: "Home",
+  },
+  {
+    link: "/learn",
+    label: "Features",
+  },
+  {
+    link: "/pricing",
+    label: "Pricing",
+  },
+];
 
 const useStyles = createStyles((theme) => ({
   inner: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     height: 56,
 
-    [theme.fn.smallerThan('sm')]: {
-      justifyContent: 'flex-start',
+    [theme.fn.smallerThan("sm")]: {
+      justifyContent: "flex-start",
     },
   },
 
   links: {
     width: 260,
 
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
     },
   },
 
   social: {
     width: 260,
 
-    [theme.fn.smallerThan('sm')]: {
-      width: 'auto',
-      marginLeft: 'auto',
+    [theme.fn.smallerThan("sm")]: {
+      width: "auto",
+      marginLeft: "auto",
     },
   },
 
   burger: {
     marginRight: theme.spacing.md,
 
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
     },
   },
 
   link: {
-    display: 'block',
+    display: "block",
     lineHeight: 1,
-    padding: '8px 12px',
+    padding: "8px 12px",
     borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    textDecoration: "none",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
     },
   },
 
   linkActive: {
-    '&, &:hover': {
+    "&, &:hover": {
       backgroundColor:
-        theme.colorScheme === 'dark'
+        theme.colorScheme === "dark"
           ? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
           : theme.colors[theme.primaryColor][0],
-      color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 3 : 7],
+      color:
+        theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 3 : 7],
     },
   },
 }));
 
-
-const HeaderMiddle= ()=>{
+const HeaderMiddle = () => {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
@@ -92,7 +110,9 @@ const HeaderMiddle= ()=>{
     <a
       key={link.label}
       href={link.link}
-      className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+      className={cx(classes.link, {
+        [classes.linkActive]: active === link.link,
+      })}
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);
@@ -114,8 +134,15 @@ const HeaderMiddle= ()=>{
         <Group className={classes.links} spacing={5}>
           {items}
         </Group>
-
-
+        <Box style={{ display: "flex", flexDirection: "row" }}>
+          <ThemeIcon radius="xs" size="xl">
+            <Image src={TraideasLogo} alt="TraideasLogo" />
+          </ThemeIcon>
+          <Space w="md" />
+          <Box >
+            <Text>Traideas</Text>
+          </Box>
+        </Box>
 
         <Group spacing={0} className={classes.social} position="right" noWrap>
           <ActionIcon size="lg">
@@ -131,6 +158,6 @@ const HeaderMiddle= ()=>{
       </Container>
     </Header>
   );
-}
+};
 
-export default HeaderMiddle
+export default HeaderMiddle;

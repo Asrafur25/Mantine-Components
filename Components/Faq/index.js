@@ -1,5 +1,5 @@
-import React from 'react';
-import { createStyles, Image, Accordion, Grid, Col, Container, Title } from '@mantine/core';
+import React,{useState} from 'react';
+import { createStyles, Image, Accordion, Grid, Col, Container, Title, Transition } from '@mantine/core';
 import image from '../../public/image.b0c2306b.svg';
 
 const useStyles = createStyles((theme) => ({
@@ -26,12 +26,15 @@ const placeholder =
 
 const  FaqWithImage=()=> {
   const { classes } = useStyles();
+  const [opened,setOpened]=useState(false)
   return (
     <div className={classes.wrapper}>
       <Container size="lg">
         <Grid id="faq-grid" gutter={50}>
           <Col span={12} md={6}>
+        
             <Image src={image.src} alt="Frequently Asked Questions" />
+          
           </Col>
           <Col span={12} md={6}>
             <Title order={2} align="left" className={classes.title}>
